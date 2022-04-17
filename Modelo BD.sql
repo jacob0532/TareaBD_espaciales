@@ -1,0 +1,124 @@
+USE [Espaciales]
+GO
+/****** Object:  Table [dbo].[Bloque]    Script Date: 17/4/2022 01:48:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Bloque](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[letraBloque] [char](1) NOT NULL,
+	[area] [int] NOT NULL,
+	[tipo] [int] NOT NULL,
+	[figura] [geography] NOT NULL,
+	[puntoCentro] [geography] NOT NULL,
+	[idTipoComercioFK] [int] NULL,
+	[idInventarioFK] [int] NULL,
+ CONSTRAINT [PK__Bloque__3213E83F5B7AFEDB] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DiaSemana]    Script Date: 17/4/2022 01:48:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DiaSemana](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
+ CONSTRAINT [PK__DiaSeman__3213E83FEC33FF42] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Horario]    Script Date: 17/4/2022 01:48:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Horario](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[hora1] [time](0) NOT NULL,
+	[hora2] [time](0) NOT NULL,
+	[idDiaSemanaFK] [int] NOT NULL,
+	[idBloqueFK] [int] NOT NULL,
+ CONSTRAINT [PK__Horario__3213E83FA6B8D487] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Inventario]    Script Date: 17/4/2022 01:48:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Inventario](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
+	[descripcion] [varchar](100) NOT NULL,
+	[precio] [int] NOT NULL,
+	[cantidad] [int] NOT NULL,
+	[idTipoProductoFK] [int] NOT NULL,
+ CONSTRAINT [PK__Inventar__3213E83FD8B231E2] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipoComercio]    Script Date: 17/4/2022 01:48:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipoComercio](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
+ CONSTRAINT [PK__TipoCome__3213E83F483F4515] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipoProducto]    Script Date: 17/4/2022 01:48:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipoProducto](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](50) NOT NULL,
+ CONSTRAINT [PK__TipoProd__3213E83F3B1E3958] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Bloque]  WITH CHECK ADD  CONSTRAINT [FK_Bloque.idInventarioFK] FOREIGN KEY([idInventarioFK])
+REFERENCES [dbo].[Inventario] ([id])
+GO
+ALTER TABLE [dbo].[Bloque] CHECK CONSTRAINT [FK_Bloque.idInventarioFK]
+GO
+ALTER TABLE [dbo].[Bloque]  WITH CHECK ADD  CONSTRAINT [FK_Bloque.idTipoComercioFK] FOREIGN KEY([idTipoComercioFK])
+REFERENCES [dbo].[TipoComercio] ([id])
+GO
+ALTER TABLE [dbo].[Bloque] CHECK CONSTRAINT [FK_Bloque.idTipoComercioFK]
+GO
+ALTER TABLE [dbo].[Horario]  WITH CHECK ADD  CONSTRAINT [FK_Horario.idDiaSemanaFK] FOREIGN KEY([idDiaSemanaFK])
+REFERENCES [dbo].[DiaSemana] ([id])
+GO
+ALTER TABLE [dbo].[Horario] CHECK CONSTRAINT [FK_Horario.idDiaSemanaFK]
+GO
+ALTER TABLE [dbo].[Horario]  WITH CHECK ADD  CONSTRAINT [FK_Horario_Bloque] FOREIGN KEY([idBloqueFK])
+REFERENCES [dbo].[Bloque] ([id])
+GO
+ALTER TABLE [dbo].[Horario] CHECK CONSTRAINT [FK_Horario_Bloque]
+GO
+ALTER TABLE [dbo].[Inventario]  WITH CHECK ADD  CONSTRAINT [FK_Inventario.idTipoProductoFK] FOREIGN KEY([idTipoProductoFK])
+REFERENCES [dbo].[TipoProducto] ([id])
+GO
+ALTER TABLE [dbo].[Inventario] CHECK CONSTRAINT [FK_Inventario.idTipoProductoFK]
+GO

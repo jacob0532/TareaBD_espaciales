@@ -1,0 +1,21 @@
+tipo de bloque = casa,comercio,calle
+
+Tipo comercio va lleno desde el inicio (carniceria,banco,panaderia,verdureria)
+tipo de producto va lleno desde el inicio
+DIA
+
+
+
+cantidad de puntos vertices 
+la orientacion 
+la medida 
+
+
+Inventario
+
+
+
+
+
+
+
