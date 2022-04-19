@@ -1,4 +1,4 @@
-USE [Espaciales]
+USE [espaciales]
 GO
 /****** Object:  Table [dbo].[Bloque]    Script Date: 17/4/2022 01:48:42 ******/
 SET ANSI_NULLS ON

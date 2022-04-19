@@ -1,0 +1,42 @@
+<Catalogos>
+  <Dia_Semana>
+    <Dia_Semana Nombre="Lunes"/>
+    <Dia_Semana Nombre="Martes"/>
+    <Dia_Semana Nombre="Miercoles"/>
+    <Dia_Semana Nombre="Jueves"/>
+    <Dia_Semana Nombre="Viernes"/>
+    <Dia_Semana Nombre="Sabado"/>
+    <Dia_Semana Nombre="Domingo"/>
+  </Dia_Semana>
+
+  <Tipo_Comercio>
+    <Tipo_Comercio Id="1" Nombre="Carniceria"/>
+    <Tipo_Comercio Id="2" Nombre="Zapateria"/>
+    <Tipo_Comercio Id="3" Nombre="Muebleria"/>
+    <Tipo_Comercio Id="4" Nombre="Panaderia"/>
+    <Tipo_Comercio Id="5" Nombre="Pasamaneria"/>
+    <Tipo_Comercio Id="6" Nombre="Macrobiotica"/>
+  </Tipo_Comercio>
+
+
+  <Tipo_Producto>
+    <Tipo_Producto Id="1" Nombre="Carnes rojas" />
+    <Tipo_Producto Id="2" Nombre="Carnes blancas" />
+    <Tipo_Producto Id="3" Nombre="Tennis" />
+    <Tipo_Producto Id="4" Nombre="Tacones" />
+    <Tipo_Producto Id="5" Nombre="Sillas" />
+    <Tipo_Producto Id="6" Nombre="Camas" />
+    <Tipo_Producto Id="7" Nombre="Panes" />
+    <Tipo_Producto Id="8" Nombre="Postres" />
+    <Tipo_Producto Id="9" Nombre="Pinturas acrilicas" />
+    <Tipo_Producto Id="10" Nombre="Pinceles" />
+    <Tipo_Producto Id="11" Nombre="Hierbas" />
+    <Tipo_Producto Id="12" Nombre="Suplementos" />
+  </Tipo_Producto>
+
+  <Inventario>
+    <Producto Nombre="Bistec de res" Descripcion="Un trozo de carne bastante apetitoso" Precio="1000" Cantidad="12" FKTipo="1" />
+  </Inventario>
+
+
+</Catalogos>
