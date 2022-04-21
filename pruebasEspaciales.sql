@@ -23,7 +23,7 @@ SELECT @calle1 UNION ALL SELECT @calle2 UNION ALL SELECT @calle3;
 
 DECLARE @g geometry;  
 SET @g = geometry::STGeomFromText('POLYGON((0 0, 3 0, 3 3, 0 3, 0 0))', 0);
-SELECT @g
+--SELECT @g
 SELECT @g.STCentroid().ToString();  
 
 

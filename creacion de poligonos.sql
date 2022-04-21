@@ -1,18 +1,23 @@
-DECLARE @g1 geometry,@g2 geometry,@g3 geometry,@g4 geometry,@g5 geometry,@g6 geometry,@g7 geometry;
-DECLARE @curva1 geometry, @curva2 geometry, @curva3 geometry, @curva4 geometry;
-DECLARE @calle1 geometry; 
---Casas
-SET @g1 = geometry::STGeomFromText('POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))',0);
---Comercios
-SET @g2 = geometry::STGeomFromText('POLYGON((0 0, 0 1, 2 1, 2 0, 0 0))',0);
---calle
-SET @g3 = geometry::STGeomFromText('POLYGON((0 0, 0 1, 5 1, 5 0, 0 0))',0);
---calle curva
-SET @g5 = geometry::STGeomFromText('POLYGON((15 0, 15 15, 16 15, 16 0, 15 0))',0);
-SET @g6 = geometry::STGeomFromText('POLYGON((5 0, 10 0, 10 1, 5 1, 5 0))',0);
-SET @g7 = geometry::STGeomFromText('POLYGON((10 0, 15 0, 15 1, 10 1, 10 0))',0);
+DECLARE @casa1 geometry,@casa2 geometry,@casa3 geometry,@casa4 geometry;
+DECLARE @comercio1 geometry, @comercio2 geometry, @comercio3 geometry, @comercio4 geometry;
+DECLARE @calle1 geometry,@calle2 geometry,@calle3 geometry,@calle4 geometry; 
 
-SET @calle1 = geometry::STGeomFromText('MULTIPOLYGON(((0 0, 5 0, 5 1, 0 1, 0 0)),((5 0, 10 0, 10 1, 5 1, 5 0)),((10 0, 15 0, 15 1, 10 1, 10 0)))',0);
-SELECT @calle1 UNION ALL SELECT @g5 UNION ALL SELECT @g6
+--calle
+--SET @calle1 = geometry::STGeomFromText('POLYGON((1 0, 1 1, 15 1, 15 0, 1 0))',0);
+--SET @calle2 = geometry::STGeomFromText('POLYGON((15 0, 15 15, 16 15, 16 0, 15 0))',0);
+--SET @calle3 = geometry::STGeomFromText('POLYGON((1 15, 15 15, 15 14, 1 14, 1 15))',0);
+--SET @calle4 = geometry::STGeomFromText('POLYGON((1 1, 2 1, 2 14, 1 14, 1 1))',0);
+SET @calle1 = geometry::STGeomFromText('MULTIPOLYGON(((1 0, 1 1, 15 1, 15 0, 1 0)),((15 0, 15 15, 16 15, 16 0, 15 0)),((1 15, 15 15, 15 14, 1 14, 1 15)),((1 1, 2 1, 2 14, 1 14, 1 1)))',0);
+--Casas
+SET @casa1 = geometry::STGeomFromText('POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))',0); --x15
+SET @casa2 = geometry::STGeomFromText('POLYGON((0 1, 1 1, 1 2, 0 2, 0 1))',0);
+SET @casa3 = geometry::STGeomFromText('POLYGON((0 2, 1 2, 1 3, 0 3, 0 2))',0);
+
+SELECT @calle1 UNION ALL SELECT @casa1 UNION ALL SELECT @casa2 UNION ALL SELECT @casa3;
+--Comercios
+--SET @g2 = geometry::STGeomFromText('POLYGON((0 0, 0 1, 2 1, 2 0, 0 0))',0);
+
+
+
 --SELECT @g5.STUnion(@g6.STUnion(@g7)) UNION ALL SELECT @curva1
 --SET @g6 = geometry::STGeomFromText('CURVEPOLYGON(CIRCULARSTRING(0 0, 1 0, 3 0, 3 3, 0 0))',0);
