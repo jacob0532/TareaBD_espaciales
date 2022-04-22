@@ -1,5 +1,5 @@
 USE espaciales
---Inserción y lectura de datos desde un archivo XML
+--InserciÃ³n y lectura de datos desde un archivo XML
 --Ruta: C:\Users\yeico\Desktop\BDTarea2\XML\catalogos.xml jacob
 -- C:\Users\josh\Downloads\TareaBD_espaciales-main\BDEspaciales_Datos.xml joishua
 DECLARE @xmlData XML
