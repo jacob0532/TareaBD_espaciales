@@ -39,4 +39,16 @@
   </Inventario>
 
 
+<Tipo_de_bloque>
+<TipoBloque Nombre="Casa"/>
+<TipoBloque Nombre="Comercio"/>
+<TipoBloque Nombre="Calle"/>
+</Tipo_de_bloque>
+
+
+<Bloque>
+	<Bloque letraBloque="A" area="222" figura="POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))" idInventarioFK="1" idTipoBloqueFK="1" idTipoComercioFK="1" />
+	
+</Bloque>
+
 </Catalogos>

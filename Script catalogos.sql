@@ -34,3 +34,20 @@ ref.value('@Precio','int'),
 ref.value('@Cantidad','int')
 ,ref.value('@FKTipo','int')
 FROM @xmlData.nodes('Catalogos/Inventario/Producto') xmlData(ref)
+
+--Inserta los tipos de bloque
+INSERT INTO TipoBloque(nombre)
+SELECT ref.value('@nombre','VARCHAR(50)')
+FROM @xmlData.nodes('Catalogos/Tipo_de_bloque/TipoBloque') xmlData(ref)
+
+--Inserta un bloque para la ciudad en la tabla bloque
+
+INSERT INTO Bloque(letraBloque,area,figura,puntoCentro,idInventarioFK,idTipoBloqueFK,idTipoComercioFK)
+SELECT ref.value('@letraBloque','CHAR(1)'),
+ref.value('@area','int'),
+geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0),
+geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0).STCentroid(), --Cambiar el tipo de dato a geography?
+ref.value('@idInventarioFK','int'),
+ref.value('@idTipoBloqueFK','int'),
+ref.value('@idTipoComercioFK','int')
+FROM @xmlData.nodes('Catalogos/Bloque/Bloque') xmlData(ref)
