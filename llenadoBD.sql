@@ -1,5 +1,5 @@
 USE espaciales
---InserciÃ³n y lectura de datos desde un archivo XML
+--Inserción y lectura de datos desde un archivo XML
 --Ruta: C:\Users\yeico\Desktop\BDTarea2\XML\catalogos.xml jacob
 -- C:\Users\josh\Downloads\TareaBD_espaciales-main\BDEspaciales_Datos.xml joishua
 DECLARE @xmlData XML
@@ -45,8 +45,8 @@ FROM @xmlData.nodes('Catalogos/Tipo_de_bloque/TipoBloque') xmlData(ref)
 INSERT INTO Bloque(letraBloque,area,figura,puntoCentro,idInventarioFK,idTipoBloqueFK,idTipoComercioFK)
 SELECT ref.value('@letraBloque','CHAR(1)'),
 ref.value('@area','int'),
-geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0),
-geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0).STCentroid(), --Cambiar el tipo de dato a geography?
+geography::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0),
+geography::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0).STCentroid(), --Cambiar el tipo de dato a geometry?
 ref.value('@idInventarioFK','int'),
 ref.value('@idTipoBloqueFK','int'),
 ref.value('@idTipoComercioFK','int')
