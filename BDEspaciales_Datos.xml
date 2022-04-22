@@ -14,8 +14,8 @@
     <Tipo_Comercio Id="2" Nombre="Zapateria"/>
     <Tipo_Comercio Id="3" Nombre="Muebleria"/>
     <Tipo_Comercio Id="4" Nombre="Panaderia"/>
-    <Tipo_Comercio Id="5" Nombre="Pasamaneria"/>
-    <Tipo_Comercio Id="6" Nombre="Macrobiotica"/>
+    <Tipo_Comercio Id="5" Nombre="Verdureria"/>
+    <Tipo_Comercio Id="6" Nombre="Mercado"/>
   </Tipo_Comercio>
 
 
@@ -34,20 +34,37 @@
     <Tipo_Producto Id="12" Nombre="Suplementos" />
   </Tipo_Producto>
 
+  <Categoria_Producto>
+    <Categoria_Producto Id="1" Nombre="Carnes rojas" />
+    <Categoria_Producto Id="2" Nombre="Carnes blancas" />
+    <Categoria_Producto Id="3" Nombre="Tennis" />
+    <Categoria_Producto Id="4" Nombre="Tacones" />
+    <Categoria_Producto Id="5" Nombre="Sillas" />
+    <Categoria_Producto Id="6" Nombre="Camas" />
+    <Categoria_Producto Id="7" Nombre="Panes" />
+    <Categoria_Producto Id="8" Nombre="Postres" />
+    <Categoria_Producto Id="9" Nombre="Pinturas acrilicas" />
+    <Categoria_Producto Id="10" Nombre="Pinceles" />
+    <Categoria_Producto Id="11" Nombre="Hierbas" />
+    <Categoria_Producto Id="12" Nombre="Suplementos" />
+  </Categoria_Producto>
+
+
+
   <Inventario>
     <Producto Nombre="Bistec de res" Descripcion="Un trozo de carne bastante apetitoso" Precio="1000" Cantidad="12" FKTipo="1" />
   </Inventario>
 
 
 <Tipo_de_bloque>
-<TipoBloque Nombre="Casa"/>
-<TipoBloque Nombre="Comercio"/>
-<TipoBloque Nombre="Calle"/>
+<TipoBloque Id="1" Nombre="Casa"/>
+<TipoBloque Id="2" Nombre="Comercio"/>
+<TipoBloque Id="3" Nombre="Calle"/>
 </Tipo_de_bloque>
 
 
 <Bloque>
-	<Bloque letraBloque="A" area="222" figura="POLYGON((0 0, 0 1, 1 1, 1 0, 0 0))" idInventarioFK="1" idTipoBloqueFK="1" idTipoComercioFK="1" />
+	<Bloque letraBloque="B" area="222" figura="POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))" idTipoBloqueFK="1" idTipoComercioFK="1" />
 	
 </Bloque>
 
