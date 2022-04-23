@@ -52,9 +52,13 @@
 
 
   <Inventario>
-    <Producto Nombre="Bistec de res" Descripcion="Un trozo de carne bastante apetitoso" Precio="1000" Cantidad="12" FKTipo="1" />
+    <Producto precioUnidad="100" cantidad="10" idProductoFK="1"
+idBloqueFK="1" />
   </Inventario>
 
+<Producto>
+	<Producto nombre="Aguacate" descripcion="Es un aguacate" idTipoProductoFK="12" />
+</Producto>
 
 <Tipo_de_bloque>
 <TipoBloque Id="1" Nombre="Casa"/>
