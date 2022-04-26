@@ -432,7 +432,42 @@ BEGIN
 END
 GO
 
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 26/04/2022
+-- Description:	Obtiene los horarios de las tiendas, y los ordena por tipo
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Horario_select] 
+	-- Add the parameters for the stored procedure here
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
 
+    -- Insert statements for procedure here
+	
+	BEGIN TRY
+
+	SELECT TC.nombre AS [Nombre del comercio], DS.nombre AS [Dia de la semana] , H.hora1 as [Hora de entrada], H.hora2 as [Hora de salida]
+		FROM Horario H
+		INNER JOIN Bloque B on B.id = H.idBloqueFK
+		INNER JOIN DiaSemana DS on DS.id = H.idDiaSemanaFK
+		INNER JOIN TipoComercio TC ON B.idTipoComercioFK = TC.id
+		ORDER BY TC.nombre; 
+		RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+END
+GO
 
 
 
