@@ -22,5 +22,6 @@ SELECT @calle1 UNION ALL
 SELECT @comercio4
 
 
+
 --SELECT @g5.STUnion(@g6.STUnion(@g7)) UNION ALL SELECT @curva1
 --SET @g6 = geometry::STGeomFromText('CURVEPOLYGON(CIRCULARSTRING(0 0, 1 0, 3 0, 3 3, 0 0))',0);

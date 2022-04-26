@@ -10,54 +10,57 @@
   </Dia_Semana>
 
   <Tipo_Comercio>
-    <Tipo_Comercio Id="1" Nombre="Carniceria"/>
-    <Tipo_Comercio Id="2" Nombre="Zapateria"/>
-    <Tipo_Comercio Id="3" Nombre="Muebleria"/>
-    <Tipo_Comercio Id="4" Nombre="Panaderia"/>
-    <Tipo_Comercio Id="5" Nombre="Verdureria"/>
-    <Tipo_Comercio Id="6" Nombre="Mercado"/>
+    <Tipo_Comercio Id="1" Nombre="Carniceria don porcino"/>
+    <Tipo_Comercio Id="2" Nombre="Panaderia trigo dorado"/>
+    <Tipo_Comercio Id="3" Nombre="Verdureria frescura"/>
+    <Tipo_Comercio Id="4" Nombre="Muebles Don Gonzalo"/>
+    <Tipo_Comercio Id="5" Nombre="Carnes Toron"/>
   </Tipo_Comercio>
 
 
   <Tipo_Producto>
     <Tipo_Producto Id="1" Nombre="Carnes rojas" />
     <Tipo_Producto Id="2" Nombre="Carnes blancas" />
-    <Tipo_Producto Id="3" Nombre="Tennis" />
-    <Tipo_Producto Id="4" Nombre="Tacones" />
-    <Tipo_Producto Id="5" Nombre="Sillas" />
-    <Tipo_Producto Id="6" Nombre="Camas" />
-    <Tipo_Producto Id="7" Nombre="Panes" />
-    <Tipo_Producto Id="8" Nombre="Postres" />
-    <Tipo_Producto Id="9" Nombre="Pinturas acrilicas" />
-    <Tipo_Producto Id="10" Nombre="Pinceles" />
-    <Tipo_Producto Id="11" Nombre="Hierbas" />
-    <Tipo_Producto Id="12" Nombre="Suplementos" />
+    <Tipo_Producto Id="3" Nombre="Verdura" />
+    <Tipo_Producto Id="4" Nombre="Pan" />
+    <Tipo_Producto Id="5" Nombre="Reposteria" />
+    <Tipo_Producto Id="6" Nombre="Madera" />
+    <Tipo_Producto Id="7" Nombre="Metal" />
   </Tipo_Producto>
-
-  <Categoria_Producto>
-    <Categoria_Producto Id="1" Nombre="Carnes rojas" />
-    <Categoria_Producto Id="2" Nombre="Carnes blancas" />
-    <Categoria_Producto Id="3" Nombre="Tennis" />
-    <Categoria_Producto Id="4" Nombre="Tacones" />
-    <Categoria_Producto Id="5" Nombre="Sillas" />
-    <Categoria_Producto Id="6" Nombre="Camas" />
-    <Categoria_Producto Id="7" Nombre="Panes" />
-    <Categoria_Producto Id="8" Nombre="Postres" />
-    <Categoria_Producto Id="9" Nombre="Pinturas acrilicas" />
-    <Categoria_Producto Id="10" Nombre="Pinceles" />
-    <Categoria_Producto Id="11" Nombre="Hierbas" />
-    <Categoria_Producto Id="12" Nombre="Suplementos" />
-  </Categoria_Producto>
-
 
 
   <Inventario>
-    <Producto precioUnidad="100" cantidad="10" idProductoFK="1"
-idBloqueFK="1" />
+    <Producto precioUnidad="1500" cantidad="11" idProductoFK="1" idBloqueFK="1" />
+    <Producto precioUnidad="1000" cantidad="10" idProductoFK="2" idBloqueFK="1" />
+    <Producto precioUnidad="3000" cantidad="5" idProductoFK="3" idBloqueFK="1" />
+    <Producto precioUnidad="700" cantidad="19" idProductoFK="4" idBloqueFK="1" />
+    <Producto precioUnidad="1500" cantidad="14" idProductoFK="1" idBloqueFK="5" />
+    <Producto precioUnidad="1000" cantidad="15" idProductoFK="2" idBloqueFK="5" />
+    <Producto precioUnidad="900" cantidad="12" idProductoFK="4" idBloqueFK="5" />
+    <Producto precioUnidad="120" cantidad="50" idProductoFK="5" idBloqueFK="3" />
+    <Producto precioUnidad="500" cantidad="5" idProductoFK="10" idBloqueFK="2" />
+    <Producto precioUnidad="700" cantidad="7" idProductoFK="11" idBloqueFK="2" />
+    <Producto precioUnidad="50000" cantidad="3" idProductoFK="16" idBloqueFK="4" />
+    <Producto precioUnidad="100000" cantidad="1" idProductoFK="1" idBloqueFK="4" />
   </Inventario>
 
 <Producto>
-	<Producto nombre="Aguacate" descripcion="Es un aguacate" idTipoProductoFK="12" />
+	<Producto nombre="Carne de res" descripcion="distruido por carnes CR-SA" idTipoProductoFK="1" />
+  <Producto nombre="Carne de cerdo" descripcion="distruido por carnes CR-SA" idTipoProductoFK="1" />
+  <Producto nombre="Pescado" descripcion="distruido por carnes CR-SA" idTipoProductoFK="2" />
+  <Producto nombre="Pollo" descripcion="distruido por carnes CR-SA" idTipoProductoFK="2" />
+  <Producto nombre="Cebolla" descripcion="Cultivado en los montes de cartago" idTipoProductoFK="3" />
+  <Producto nombre="Chile Dulce" descripcion="Cultivado en los montes de cartago" idTipoProductoFK="3" />
+  <Producto nombre="Tomate" descripcion="Cultivado en los montes de cartago" idTipoProductoFK="3" />
+  <Producto nombre="Lechuga" descripcion="Cultivado en los montes de cartago" idTipoProductoFK="3" />
+  <Producto nombre="Baguette" descripcion="Horneado a las 5 am" idTipoProductoFK="4" />
+  <Producto nombre="Bonete" descripcion="Horneado a las 5 am" idTipoProductoFK="4" />
+  <Producto nombre="Dona" descripcion="Horneado a las 5 pm" idTipoProductoFK="5" />
+  <Producto nombre="Pastel de Chocolate" descripcion="Horneado a las 3 pm" idTipoProductoFK="5" />
+  <Producto nombre="Silla rustica" descripcion="AlpesSA" idTipoProductoFK="6" />
+  <Producto nombre="Mesa de cedro" descripcion="Mesa de conferencia" idTipoProductoFK="6" />
+  <Producto nombre="Mesa de laurel" descripcion="Mesa para exteriores" idTipoProductoFK="6" />
+  <Producto nombre="Silla Gamer" descripcion="Made in china" idTipoProductoFK="7" />
 </Producto>
 
 <Tipo_de_bloque>
@@ -69,7 +72,6 @@ idBloqueFK="1" />
 
 <Bloque>
 	<Bloque letraBloque="B" area="222" figura="POLYGON((0 0, 1 0, 1 1, 0 1, 0 0))" idTipoBloqueFK="1" idTipoComercioFK="1" />
-	
 </Bloque>
 
 </Catalogos>
