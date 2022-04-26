@@ -12,11 +12,17 @@ BEGIN
 	SET XACT_ABORT ON;
 
 	BEGIN TRY
-	SELECT TC.nombre AS [Nombre del establecimiento], I.nombre AS [Nombre del producto],I.descripcion,I.precio,I.cantidad,TP.nombre AS Categoria
-	FROM Inventario I
-	INNER JOIN TipoProducto TP on TP.id = I.idTipoProductoFK
-	INNER JOIN Bloque B on B.idInventarioFK = I.id
-	INNER JOIN TipoComercio TC on TC.id = B.idTipoComercioFK
+		SELECT Producto.nombre AS [Nombre del producto]
+		,Inventario.cantidad AS Cantidad
+		,Inventario.precioUnidad AS [Precio por unidad]
+		,Producto.descripcion AS Descripcion
+		,TipoProducto.nombre AS [Tipo de producto]
+		,TipoComercio.nombre AS [Tipo de comercio]
+	FROM Inventario
+		INNER JOIN Producto ON Inventario.idProductoFK = Producto.id
+		INNER JOIN Bloque ON Inventario.idBloqueFK = Bloque.id
+		INNER JOIN TipoProducto ON Producto.idTipoProductoFK = TipoProducto.id
+		INNER JOIN TipoComercio ON Bloque.idTipoComercioFK = TipoComercio.id
 	RETURN 0;
 	END TRY
 	---------
@@ -37,11 +43,10 @@ GO
 -- =============================================
 CREATE OR ALTER PROCEDURE [dbo].[Inventario_insert] 
 	-- Add the parameters for the stored procedure here
-	@nombre VARCHAR(50),
-	@descripcion VARCHAR(100),
-	@precio int,
-	@cantidad int,
-	@tipoFK int
+	@idProductoFK int,
+	@idBloqueFK int,
+	@precioUnidad int,
+	@cantidad int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -51,18 +56,18 @@ BEGIN
     -- Insert statements for procedure here
 	BEGIN TRY
 	
-	INSERT INTO [dbo].[Inventario]
-           ([nombre]
-           ,[descripcion]
-           ,[precio]
-           ,[cantidad]
-           ,[idTipoProductoFK])
-     VALUES
-           (@nombre
-           ,@descripcion
-           ,@precio
-           ,@cantidad
-           ,@tipoFK)
+	INSERT INTO Inventario (
+		idProductoFK
+		,idBloqueFK
+		,precioUnidad
+		,cantidad
+	)
+	VALUES (
+		@idProductoFK
+		,@idBloqueFK
+		,@precioUnidad
+		,@cantidad
+	)
 	RETURN 0;
 	END TRY
 	---------
@@ -85,11 +90,10 @@ GO
 CREATE PROCEDURE [dbo].[Inventario_update] 
 	-- Add the parameters for the stored procedure here
 	@InventarioID int = 0,
-	@nombre VARCHAR(50),
-	@descripcion VARCHAR(100),
-	@cantidad int,
-	@precio int,
-	@idTipoProductoFK int
+	@idProductoFK int,
+	@idBloqueFK int,
+	@precioUnidad int,
+	@cantidad int
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -98,13 +102,14 @@ BEGIN
 	SET XACT_ABORT ON;
     -- Insert statements for procedure here
 	BEGIN TRY
+	
 	UPDATE [dbo].[Inventario]
-	SET [nombre] = @nombre
-      ,[descripcion] = @descripcion
-      ,[precio] = @precio
-      ,[cantidad] = @cantidad
-      ,[idTipoProductoFK] = @idTipoProductoFK
+	SET idBloqueFK = @idBloqueFK
+		,idProductoFK = @idProductoFK
+		,cantidad = @cantidad
+		,precioUnidad = @precioUnidad
 	WHERE id = @InventarioID
+
 	RETURN 0;
 	END TRY
 
