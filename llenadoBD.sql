@@ -36,7 +36,7 @@ FROM @xmlData.nodes('Catalogos/Tipo_de_bloque/TipoBloque') xmlData(ref)
 
 INSERT INTO Bloque(letraBloque,area,figura,puntoCentro,idTipoBloqueFK,idTipoComercioFK)
 SELECT ref.value('@letraBloque','CHAR(1)'),
-ref.value('@area','int'),
+geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0).STArea(),
 geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0),
 geometry::STGeomFromText(ref.value('@figura','VARCHAR(100)'),0).STCentroid(),
 ref.value('@idTipoBloqueFK','int'),
