@@ -469,9 +469,58 @@ BEGIN
 END
 GO
 
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 26/04/2022
+-- Description:	Inserta un horario para una tienda
+-- =============================================
+CREATE OR ALTER PROCEDURE Horario_insert
+	-- Add the parameters for the stored procedure here
+	@hora1 time,
+	@hora2 time, 
+	@idBloqueFK int,
+	@idDiaSemanaFK int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
 
+    -- Insert statements for procedure here
+	
+	IF (SELECT idTipoBloqueFK FROM Bloque WHERE id = @idBloqueFK) = 1
+		BEGIN
+			IF (SELECT COUNT(*) FROM Horario WHERE (@hora1 BETWEEN hora1 AND hora2) AND @idBloqueFK = idBloqueFK) = 0
+				BEGIN
+					BEGIN TRY
+					INSERT INTO Horario(hora1,hora2,idBloqueFK,idDiaSemanaFK)
+					VALUES (@hora1,@hora2,@idBloqueFK,@idDiaSemanaFK);
+					RETURN 0;
+					END TRY
 
+					BEGIN CATCH
+						SELECT
+						ERROR_PROCEDURE() AS Procedimiento,
+						ERROR_LINE() AS Linea,
+						ERROR_MESSAGE() AS [Mensaje de Error];
+						RETURN 1;
+					END CATCH
 
+				END
+			ELSE
+				BEGIN
+					SELECT 'Conflicto de horarois. --NO se inserto el horario' as [Mensaje]
+					RETURN -2;
+				END
+		END
+	ELSE
+		BEGIN
+			SELECT 'El tipo de bloque al cual se le quiere insertar el horario no corresponde a un comercio. --NO se inserto el horario' as [Mensaje]
+			RETURN -1;
+		END
+END
+GO
 
 
 
