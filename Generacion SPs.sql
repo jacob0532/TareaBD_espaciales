@@ -155,7 +155,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob Guzmán
 -- Create date: 25/4/2022
 -- Description:	Obtiene los tipos de producto
 -- =============================================
@@ -285,6 +285,160 @@ BEGIN
 	END CATCH
 END
 GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 26/04/2022
+-- Description:	Inserta un nuevo producto en la base de datos
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Producto_create] 
+	-- Add the parameters for the stored procedure here
+	@nombre VARCHAR(50),
+	@descripcion VARCHAR(100),
+	@idTipoProductoFK int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+	INSERT INTO Producto(nombre,descripcion,idTipoProductoFK)
+	VALUES (@nombre,@descripcion,@idTipoProductoFK)
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 26/04/2022
+-- Description:	Elimina la informacion de un producto de la base de datos
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Producto_delete]
+	-- Add the parameters for the stored procedure here
+	@idProducto int,
+	@nombre VARCHAR(50),
+	@descripcion VARCHAR(100),
+	@idTipoProductoFK int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+	DELETE Producto
+	WHERE id = @idProducto
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 26/04/2022
+-- Description:	Consulta todos los productos de la base de datos
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Producto_select]
+	-- Add the parameters for the stored procedure here
+	
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+	SELECT *
+	FROM Producto
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 26/04/2022
+-- Description:	Actualiza la informacion de un producto de la base de datos
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Producto_update]
+	-- Add the parameters for the stored procedure here
+	@idProducto int,
+	@nombre VARCHAR(50),
+	@descripcion VARCHAR(100),
+	@idTipoProductoFK int
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+	UPDATE Producto
+	SET nombre = @nombre,
+	descripcion = @descripcion,
+	idTipoProductoFK = @idTipoProductoFK
+	WHERE id = @idProducto
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+
+END
+GO
+
+
+
+
+
+
+
+
 
 ---------------PRUEBAS----------------
 --Falta update y delete
