@@ -1,10 +1,10 @@
 ------------------CREACIÓN------------------------
 -- =============================================
--- Author:		Joshua Arcia
+-- Author:		Joshua Arcia y Jacob Guzmán
 -- Create date: 18/04/2022
 -- Description:	Selecciona la información de un inventario
 -- =============================================
-CREATE OR ALTER PROCEDURE [dbo].[Inventario_select] 
+CREATE OR ALTER PROCEDURE [dbo].[Inventario_read] 
 AS
 BEGIN
 
@@ -37,11 +37,11 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia
+-- Author:		Joshua Arcia y Jacob Guzmán
 -- Create date: 18/04/2022
 -- Description:	Inserción de productos en los inventarios
 -- =============================================
-CREATE OR ALTER PROCEDURE [dbo].[Inventario_insert] 
+CREATE OR ALTER PROCEDURE [dbo].[Inventario_create] 
 	-- Add the parameters for the stored procedure here
 	@idProductoFK int,
 	@idBloqueFK int,
@@ -82,7 +82,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia
+-- Author:		Joshua Arcia y Jacob Guzmán
 -- Create date: 18/04/2022
 -- Description:	Actualizacion de la informacion de los productos en un inventario; 
 -- Debería actualizar un campo, solamente si le envían un dato nuevo para dicho campo
@@ -124,7 +124,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia
+-- Author:		Joshua Arcia y Jacob Guzmán
 -- Create date: 18/04/2022
 -- Description:	Elimina un inventario
 -- =============================================
@@ -154,21 +154,145 @@ BEGIN
 END
 GO
 
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán y Jacob Guzmán
+-- Create date: 25/4/2022
+-- Description:	Obtiene los tipos de producto
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Tipo_de_producto_read] 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+	SELECT *
+	FROM TipoProducto;
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 25/04/2022
+-- Description:	Crea un tipo de producto
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Tipo_de_producto_create] 
+	
+AS
+BEGIN
+	DECLARE @nombre VARCHAR(50)
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+
+	INSERT INTO TipoProducto (nombre)
+	VALUES	(@nombre)
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 25/04/2022
+-- Description:	Elimina la información de un tipo de producto
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Tipo_de_producto_delete]
+	
+AS
+BEGIN
+	DECLARE @idTipo_Producto int
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+
+	DELETE TipoProducto
+	WHERE @idTipo_Producto = TipoProducto.id;
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 25/04/2022
+-- Description:	Actualiza la información de un tipo de producto
+-- =============================================
+CREATE OR ALTER PROCEDURE [dbo].[Tipo_de_producto_update]
+	
+AS
+BEGIN
+	DECLARE @idTipo_Producto int,
+	@nombre VARCHAR(50)
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+
+    -- Insert statements for procedure here
+	BEGIN TRY
+
+	UPDATE TipoProducto
+	SET	nombre = @nombre
+	WHERE @idTipo_Producto = TipoProducto.id;
+	RETURN 0;
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+END
+GO
+
 ---------------PRUEBAS----------------
 --Falta update y delete
 DECLARE	@return_value int
 
-EXEC	@return_value = [dbo].[Inventario_select]
+EXEC	@return_value = [dbo].[Inventario_read]
 
 SELECT	'Return Value' = @return_value
-
-
-EXEC	@return_value = [dbo].[Inventario_insert]
-		@nombre = N'Prueba',
-		@descripcion = N'Hola',
-		@precio = 123,
-		@cantidad = 1,
-		@tipoFK = 2
 
 SELECT	'Return Value' = @return_value
 
