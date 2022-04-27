@@ -43,6 +43,7 @@ ref.value('@idTipoBloqueFK','int'),
 ref.value('@idTipoComercioFK','int')
 FROM @xmlData.nodes('Catalogos/Bloque/Bloque') xmlData(ref)
 
+
 --Inserta un producto
 INSERT INTO Producto(nombre,descripcion,idTipoProductoFK)
 SELECT ref.value('@nombre','VARCHAR(50)'),
