@@ -1,8 +1,8 @@
-------------------CREACIÓN------------------------
+------------------CREACIÃ“N------------------------
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 18/04/2022
--- Description:	Selecciona la información de un inventario
+-- Description:	Selecciona la informaciÃ³n de un inventario
 -- =============================================
 CREATE OR ALTER PROCEDURE [dbo].[Inventario_read] 
 AS
@@ -37,9 +37,9 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 18/04/2022
--- Description:	Inserción de productos en los inventarios
+-- Description:	InserciÃ³n de productos en los inventarios
 -- =============================================
 CREATE OR ALTER PROCEDURE [dbo].[Inventario_create] 
 	-- Add the parameters for the stored procedure here
@@ -82,10 +82,10 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 18/04/2022
 -- Description:	Actualizacion de la informacion de los productos en un inventario; 
--- Debería actualizar un campo, solamente si le envían un dato nuevo para dicho campo
+-- DeberÃ­a actualizar un campo, solamente si le envÃ­an un dato nuevo para dicho campo
 -- =============================================
 CREATE PROCEDURE [dbo].[Inventario_update] 
 	-- Add the parameters for the stored procedure here
@@ -124,7 +124,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 18/04/2022
 -- Description:	Elimina un inventario
 -- =============================================
@@ -155,7 +155,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 25/4/2022
 -- Description:	Obtiene los tipos de producto
 -- =============================================
@@ -186,7 +186,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 25/04/2022
 -- Description:	Crea un tipo de producto
 -- =============================================
@@ -219,9 +219,9 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 25/04/2022
--- Description:	Elimina la información de un tipo de producto
+-- Description:	Elimina la informaciÃ³n de un tipo de producto
 -- =============================================
 CREATE OR ALTER PROCEDURE [dbo].[Tipo_de_producto_delete]
 	
@@ -252,9 +252,9 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 25/04/2022
--- Description:	Actualiza la información de un tipo de producto
+-- Description:	Actualiza la informaciÃ³n de un tipo de producto
 -- =============================================
 CREATE OR ALTER PROCEDURE [dbo].[Tipo_de_producto_update]
 	
@@ -287,7 +287,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 26/04/2022
 -- Description:	Inserta un nuevo producto en la base de datos
 -- =============================================
@@ -323,7 +323,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 26/04/2022
 -- Description:	Elimina la informacion de un producto de la base de datos
 -- =============================================
@@ -360,7 +360,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 26/04/2022
 -- Description:	Consulta todos los productos de la base de datos
 -- =============================================
@@ -393,7 +393,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 26/04/2022
 -- Description:	Actualiza la informacion de un producto de la base de datos
 -- =============================================
@@ -433,7 +433,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 26/04/2022
 -- Description:	Obtiene los horarios de las tiendas, y los ordena por tipo
 -- =============================================
@@ -470,7 +470,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 26/04/2022
 -- Description:	Inserta un horario para una tienda
 -- =============================================
@@ -523,7 +523,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 27/04/2022
 -- Description:	Dado dos bloques, determina si son vecinos o no
 -- =============================================
@@ -574,7 +574,7 @@ END
 GO
 
 -- =============================================
--- Author:		Joshua Arcia y Jacob Guzmán
+-- Author:		Joshua Arcia y Jacob GuzmÃ¡n
 -- Create date: 27/04/2022
 -- Description:	Dado dos bloques, determina la distancia entre ellos
 -- =============================================
@@ -598,7 +598,7 @@ BEGIN
 	FROM Bloque
 	WHERE Bloque.id = @idBloque1
 
-	SELECT @geoBloque1 = puntoCentro
+	SELECT @geoBloque2 = puntoCentro
 	FROM Bloque
 	WHERE Bloque.id = @idBloque2
 
