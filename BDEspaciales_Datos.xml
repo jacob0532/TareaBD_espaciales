@@ -155,4 +155,40 @@
   
 </Bloque>
 
+<Horario>
+ 
+  <Horario horaInicio="09:00:00" horaSalida="22:00:00" idDiaSemana="1" idBloque="1" />
+  <Horario horaInicio="09:00:00" horaSalida="22:00:00" idDiaSemana="2" idBloque="1" />
+  <Horario horaInicio="09:00:00" horaSalida="22:00:00" idDiaSemana="3" idBloque="1" />
+  <Horario horaInicio="09:00:00" horaSalida="22:00:00" idDiaSemana="4" idBloque="1" />
+  <Horario horaInicio="09:00:00" horaSalida="22:00:00" idDiaSemana="5" idBloque="1" />
+
+  <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="1" idBloque="2" />
+  <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="2" idBloque="2" />
+  <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="3" idBloque="2" />
+  <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="4" idBloque="2" />
+  <Horario horaInicio="09:00:00" horaSalida="20:00:00" idDiaSemana="5" idBloque="2" />
+
+  <Horario horaInicio="09:00:00" horaSalida="18:00:00" idDiaSemana="1" idBloque="3" />
+  <Horario horaInicio="09:00:00" horaSalida="18:00:00" idDiaSemana="2" idBloque="3" />
+  <Horario horaInicio="09:00:00" horaSalida="18:00:00" idDiaSemana="3" idBloque="3" />
+  <Horario horaInicio="09:00:00" horaSalida="18:00:00" idDiaSemana="4" idBloque="3" />
+  <Horario horaInicio="09:00:00" horaSalida="18:00:00" idDiaSemana="5" idBloque="3" />
+
+  <Horario horaInicio="08:00:00" horaSalida="15:00:00" idDiaSemana="1" idBloque="4" />
+  <Horario horaInicio="08:00:00" horaSalida="15:00:00" idDiaSemana="2" idBloque="4" />
+  <Horario horaInicio="08:00:00" horaSalida="15:00:00" idDiaSemana="3" idBloque="4" />
+  <Horario horaInicio="08:00:00" horaSalida="15:00:00" idDiaSemana="4" idBloque="4" />
+  <Horario horaInicio="08:00:00" horaSalida="15:00:00" idDiaSemana="5" idBloque="4" />
+
+  <Horario horaInicio="09:00:00" horaSalida="17:00:00" idDiaSemana="1" idBloque="5" />
+  <Horario horaInicio="09:00:00" horaSalida="17:00:00" idDiaSemana="2" idBloque="5" />
+  <Horario horaInicio="09:00:00" horaSalida="17:00:00" idDiaSemana="3" idBloque="5" />
+  <Horario horaInicio="09:00:00" horaSalida="17:00:00" idDiaSemana="4" idBloque="5" />
+  <Horario horaInicio="09:00:00" horaSalida="17:00:00" idDiaSemana="5" idBloque="5" />
+
+
+</Horario>
+
+
 </Catalogos>
