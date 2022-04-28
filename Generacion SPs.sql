@@ -489,7 +489,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	
-	IF (SELECT idTipoBloqueFK FROM Bloque WHERE id = @idBloqueFK) = 1
+	IF (SELECT idTipoBloqueFK FROM Bloque WHERE id = @idBloqueFK) = 2
 		BEGIN
 			IF (SELECT COUNT(*) FROM Horario WHERE (@hora1 BETWEEN hora1 AND hora2) AND @idBloqueFK = idBloqueFK) = 0
 				BEGIN
@@ -510,7 +510,7 @@ BEGIN
 				END
 			ELSE
 				BEGIN
-					SELECT 'Conflicto de horarois. --NO se inserto el horario' as [Mensaje]
+					SELECT 'Conflicto de horarios. --NO se inserto el horario' as [Mensaje]
 					RETURN -2;
 				END
 		END
@@ -522,7 +522,100 @@ BEGIN
 END
 GO
 
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 27/04/2022
+-- Description:	Dado dos bloques, determina si son vecinos o no
+-- =============================================
+CREATE or ALTER PROCEDURE IdentificarVecinos 
+	-- Add the parameters for the stored procedure here
+	@idBloque1 int, 
+	@idBloque2 int 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+    -- Insert statements for procedure here
+	DECLARE
+	@geoBloque1 geometry,
+	@geoBloque2 geometry
+	BEGIN TRY 
 
+	SELECT @geoBloque1 = figura
+	FROM Bloque
+	WHERE Bloque.id = @idBloque1
+
+	SELECT @geoBloque1 = figura
+	FROM Bloque
+	WHERE Bloque.id = @idBloque2
+
+	IF @geoBloque1.STTouches(@geoBloque2) = 1
+	BEGIN
+		SELECT 'Son vecinos' as Respuesta
+	END
+
+	ELSE
+	BEGIN
+		SELECT 'No son vecinos' as Respuesta
+	END
+
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+END
+GO
+
+-- =============================================
+-- Author:		Joshua Arcia y Jacob Guzmán
+-- Create date: 27/04/2022
+-- Description:	Dado dos bloques, determina la distancia entre ellos
+-- =============================================
+CREATE or ALTER PROCEDURE CalcularDistancia
+	-- Add the parameters for the stored procedure here
+	@idBloque1 int, 
+	@idBloque2 int 
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+	SET XACT_ABORT ON;
+    -- Insert statements for procedure here
+	DECLARE
+	@geoBloque1 geometry,
+	@geoBloque2 geometry
+	BEGIN TRY 
+
+	SELECT @geoBloque1 = puntoCentro
+	FROM Bloque
+	WHERE Bloque.id = @idBloque1
+
+	SELECT @geoBloque1 = puntoCentro
+	FROM Bloque
+	WHERE Bloque.id = @idBloque2
+
+	SELECT @geoBloque1.STDistance(@geoBloque2) AS [Distancia]
+	
+
+	END TRY
+
+	BEGIN CATCH
+	SELECT
+	ERROR_PROCEDURE() AS Procedimiento,
+    ERROR_LINE() AS Linea,
+    ERROR_MESSAGE() AS [Mensaje de Error];
+	RETURN 1;
+	END CATCH
+END
+GO
 
 ---------------PRUEBAS----------------
 --Falta update y delete
