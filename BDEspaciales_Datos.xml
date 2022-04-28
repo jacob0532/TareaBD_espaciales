@@ -1,12 +1,12 @@
 <Catalogos>
   <Dia_Semana>
+    <Dia_Semana Nombre="Domingo"/>
     <Dia_Semana Nombre="Lunes"/>
     <Dia_Semana Nombre="Martes"/>
     <Dia_Semana Nombre="Miercoles"/>
     <Dia_Semana Nombre="Jueves"/>
     <Dia_Semana Nombre="Viernes"/>
     <Dia_Semana Nombre="Sabado"/>
-    <Dia_Semana Nombre="Domingo"/>
   </Dia_Semana>
 
   <Tipo_Comercio>
@@ -165,8 +165,8 @@
 
   <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="1" idBloque="2" />
   <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="2" idBloque="2" />
-  <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="3" idBloque="2" />
-  <Horario horaInicio="08:00:00" horaSalida="22:00:00" idDiaSemana="4" idBloque="2" />
+  <Horario horaInicio="08:00:00" horaSalida="23:00:00" idDiaSemana="3" idBloque="2" />
+  <Horario horaInicio="08:00:00" horaSalida="23:00:00" idDiaSemana="4" idBloque="2" />
   <Horario horaInicio="09:00:00" horaSalida="20:00:00" idDiaSemana="5" idBloque="2" />
 
   <Horario horaInicio="09:00:00" horaSalida="18:00:00" idDiaSemana="1" idBloque="3" />
