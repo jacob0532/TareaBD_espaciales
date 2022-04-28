@@ -59,8 +59,12 @@ ref.value('@idProductoFK','int'),
 ref.value('@idBloqueFK','int')
 FROM @xmlData.nodes('Catalogos/Inventario/Producto') xmlData(ref)
 
-
-
+INSERT INTO Horario(hora1,hora2,idDiaSemanaFK,idBloqueFK)
+SELECT ref.value('@horaInicio','time'),
+ref.value('@horaSalida','time'),
+ref.value('idDiaSemana','int'),
+ref.value('idBloque','int')
+FROM @xmlData.nodes('Catalogos/Horario/Horario') xmlData(ref)
 
 ----SELECT * FROM TipoBloque;
 ----SELECT * FROM sys.spatial_reference_systems;
